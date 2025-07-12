@@ -2,102 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HACKER MODE</title>
+  <title>Anonymous Hack Style</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
     html, body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
       background: black;
       color: #00ff00;
-      font-family: 'Courier New', monospace;
-    }
-
-    #bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-      opacity: 0.1;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0; left: 0;
-      z-index: -1;
-    }
-
-    #text {
-      white-space: pre;
-      font-size: 18px;
-      padding: 20px;
-      animation: typing 4s steps(40, end) 1;
+      font-family: 'Share Tech Mono', monospace;
       overflow: hidden;
-      border-right: 2px solid #00ff00;
     }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+    #globe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(0,255,0,0.05), transparent), url('https://i.gifer.com/7efs.gif') center center no-repeat;
+      background-size: cover;
+      opacity: 0.1;
+      animation: spin 60s linear infinite;
+      z-index: 0;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      top: 10%;
+    }
+    .hacker-img {
+      width: 200px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .injection {
+      font-size: 28px;
+      color: #0f0;
+      text-shadow: 0 0 10px #0f0;
+      margin: 20px 0;
+    }
+    .instagram-box {
+      background-color: rgba(0,255,0,0.1);
+      border: 1px solid #00ff00;
+      padding: 15px;
+      margin: 20px auto;
+      width: 300px;
+      border-radius: 10px;
+    }
+    .instagram-box h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+    .time-box {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #0f0;
+    }
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      color: #00ffcc;
+      text-shadow: 0 0 5px #0ff;
     }
   </style>
 </head>
 <body>
 
-<!-- Background Gambar -->
-<img id="bg" src="https://storage.googleapis.com/storage-ajaib-prd-coin-wp-artifact/2025/01/anonymous-1024x576.webp" alt="Hacker Background">
+<!-- Background Globe -->
+<div id="globe"></div>
 
-<!-- Efek Matrix -->
-<canvas id="matrix"></canvas>
-
-<!-- Efek Suara -->
-<audio autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  Browser kamu tidak support audio.
+<!-- Audio Musik -->
+<audio autoplay loop hidden>
+  <source src="https://files.catbox.moe/3g6z8q.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Teks Typing -->
-<div id="text">
-Accessing secure server...
-Bypassing firewall...
-Connection established.
-WELCOME, AGENT_404
+<!-- Konten Utama -->
+<div class="content">
+  <img src="https://storage.googleapis.com/storage-ajaib-prd-coin-wp-artifact/2025/01/anonymous-1024x576.webp" class="hacker-img" alt="Hacker Image">
+  <div class="injection">Full Injection Successfully</div>
+
+  <div class="instagram-box">
+    <h3>Preview Data: <strong>@Futur_ana30</strong></h3>
+    <p>Status: <span style="color:lime">Active</span></p>
+    <p>Data logs received</p>
+  </div>
+
+  <div class="time-box" id="timeBox">
+    Loading time...
+  </div>
 </div>
 
+<!-- Footer -->
+<div class="footer">
+  by Vicyfkr
+</div>
+
+<!-- Waktu JavaScript -->
 <script>
-  // MATRIX RAIN EFFECT
-  const canvas = document.getElementById("matrix");
-  const ctx = canvas.getContext("2d");
-
-  canvas.height = window.innerHeight;
-  canvas.width = window.innerWidth;
-
-  const letters = "01";
-  const fontSize = 14;
-  const columns = canvas.width / fontSize;
-  const drops = [];
-
-  for(let x = 0; x < columns; x++)
-    drops[x] = 1;
-
-  function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#0F0";
-    ctx.font = fontSize + "px monospace";
-
-    for(let i = 0; i < drops.length; i++) {
-      const text = letters.charAt(Math.floor(Math.random()*letters.length));
-      ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-      if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
-        drops[i] = 0;
-      drops[i]++;
-    }
+  function updateTime() {
+    const now = new Date();
+    const options = { timeZone: 'Asia/Jakarta', hour12: false };
+    const time = now.toLocaleTimeString('id-ID', options);
+    const date = now.toLocaleDateString('id-ID', options);
+    document.getElementById('timeBox').textContent = `Waktu Sekarang: ${date} - ${time}`;
   }
-
-  setInterval(draw, 33);
+  setInterval(updateTime, 1000);
+  updateTime();
 </script>
 
 </body>
