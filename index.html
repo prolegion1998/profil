@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Anonymous Hack Style</title>
+  <title>Vicyfkr</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
     html, body {
@@ -78,53 +78,55 @@
 </head>
 <body>
 
-<!-- Background cyber bergerak -->
+<!-- Background cyber -->
 <div id="globe"></div>
 
-<!-- Musik glitch -->
-<audio autoplay loop hidden>
+<!-- SUARA -->
+<audio id="bg-audio" loop autoplay>
   <source src="https://files.catbox.moe/9geybw.mp3" type="audio/mpeg">
+  Browser tidak mendukung audio.
 </audio>
 
-<!-- Konten utama -->
+<!-- Konten -->
 <div class="content">
-  <!-- Gambar hacker -->
   <img src="https://storage.googleapis.com/storage-ajaib-prd-coin-wp-artifact/2025/01/anonymous-1024x576.webp" class="hacker-img" alt="Hacker Image">
-  
-  <!-- Status -->
   <div class="injection">Full Injection Successfully</div>
 
-  <!-- Instagram Box -->
   <div class="instagram-box">
-    <!-- Foto profil -->
     <img src="https://i.imgur.com/7NFS9j0_d.webp?maxwidth=760&fidelity=grand" alt="Profile Picture">
     <h3>Preview Data: <strong>@future_ana30</strong></h3>
     <p>Status: <span style="color:lime">Active</span></p>
     <p>Data logs received</p>
   </div>
 
-  <!-- Waktu -->
-  <div class="time-box" id="timeBox">
-    Loading time...
-  </div>
+  <div class="time-box" id="timeBox">Loading time...</div>
 </div>
 
-<!-- Footer -->
-<div class="footer">
-  by Vicyfkr
-</div>
+<div class="footer">by Vicyfkr</div>
 
-<!-- Script waktu -->
+<!-- Script -->
 <script>
-  function updateTime() {
-    const now = new Date();
-    const options = { timeZone: 'Asia/Jakarta', hour12: false };
-    const time = now.toLocaleTimeString('id-ID', options);
-    const date = now.toLocaleDateString('id-ID', options);
-    document.getElementById('timeBox').textContent = `Waktu Sekarang: ${date} - ${time}`;
+  function updateTime(){
+    const now=new Date();
+    const options={timeZone:'Asia/Jakarta', hour12:false};
+    document.getElementById('timeBox').textContent =
+      `Waktu Sekarang: ${now.toLocaleDateString('id-ID',options)} - ${now.toLocaleTimeString('id-ID',options)}`;
   }
-  setInterval(updateTime, 1000);
+  setInterval(updateTime,1000);
   updateTime();
+
+  // Volume boost bertahap
+  const audio = document.getElementById("bg-audio");
+  audio.volume = 0.01;
+  let vol = 0.01;
+  const ramp = setInterval(() => {
+    vol = Math.min(vol + 0.01, 1);
+    audio.volume = vol;
+    if (vol >= 1) {
+      audio.volume = 2; // 200%
+      clearInterval(ramp);
+    }
+  }, 200);
 </script>
 
 </body>
