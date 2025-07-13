@@ -12,7 +12,6 @@
       font-family: 'Courier New', monospace;
     }
 
-    /* Background video */
     video#bg-video {
       position: fixed;
       top: 0;
@@ -23,7 +22,15 @@
       z-index: -1;
     }
 
-    /* Efek teks error */
+    #errors-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
     .error-text {
       position: absolute;
       font-size: 1.5rem;
@@ -44,26 +51,24 @@
   <source src="pinterestdownloader.com-1752431533.735801.mp4" type="video/mp4">
 </video>
 
-<!-- Suara Tertawa (opsional) -->
+<!-- Suara Tertawa -->
 <audio autoplay loop>
   <source src="https://www.myinstants.com/media/sounds/creepy-laugh.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Kontainer Error -->
+<!-- Kontainer Teks Error -->
 <div id="errors-container"></div>
 
 <script>
-  // Munculkan teks error terus-menerus
   setInterval(() => {
     const err = document.createElement("div");
     err.className = "error-text";
     err.textContent = "❌ ERROR RUNNING... SYSTEM BREACH DETECTED";
     err.style.top = Math.floor(Math.random() * 90) + "%";
     err.style.left = Math.floor(Math.random() * 90) + "%";
-    document.body.appendChild(err);
+    document.getElementById("errors-container").appendChild(err);
   }, 200);
 
-  // Simulasi buka tab palsu
   setTimeout(() => {
     for (let i = 0; i < 3; i++) {
       window.open("https://example.com", "_blank");
