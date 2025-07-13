@@ -2,105 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Track IP</title>
+  <title>ERROR RUNNING - SYSTEM BREACH</title>
   <style>
-    body {
-      background-image: url('https://files.catbox.moe/5qztj8.gif'); /* Gambar Anonymous */
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: white;
-      font-family: monospace;
-      padding: 30px;
+    html, body {
       margin: 0;
+      padding: 0;
+      background-color: black;
+      overflow: hidden;
+      font-family: 'Courier New', monospace;
     }
 
-    .terminal {
-      border: 2px solid lime;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      white-space: pre;
-      background-color: rgba(0, 0, 0, 0.4); /* Lebih transparan */
-      box-shadow: 0 0 20px black;
+    /* Background video */
+    video#bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
     }
 
-    .yellow   { color: yellow; text-shadow: 1px 1px 2px black; }
-    .red      { color: red; text-shadow: 1px 1px 2px black; }
-    .blue     { color: deepskyblue; text-shadow: 1px 1px 2px black; }
-    .cyan     { color: cyan; text-shadow: 1px 1px 2px black; }
-    .green    { color: #00ff00; text-shadow: 1px 1px 2px black; }
-    .highlight{ color: #00ffff; text-shadow: 1px 1px 2px black; }
-    a         { color: #00ffff; text-decoration: none; }
-    .prompt   { color: red; text-shadow: 1px 1px 2px black; }
+    /* Efek teks error */
+    .error-text {
+      position: absolute;
+      font-size: 1.5rem;
+      color: red;
+      animation: flicker 0.2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
   </style>
 </head>
 <body>
 
-<!-- Background Music -->
+<!-- Background Video -->
+<video id="bg-video" autoplay loop muted>
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+<!-- Suara Tertawa (opsional) -->
 <audio autoplay loop>
-  <source src="https://files.catbox.moe/ukot4h.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+  <source src="https://www.myinstants.com/media/sounds/creepy-laugh.mp3" type="audio/mpeg">
 </audio>
 
-<div class="terminal">
-<span class="red">───────────▄██████████████▄</span><br>
-<span class="red">───────▄████░░░░░░░░█▀────█▄</span><br>
-<span class="red">──────██░░░░░░░░░░░█▀──────█▄</span><br>
-<span class="red">─────██░░░░░░░░░░░█▀────────█▄</span><br>
-<span class="red">────██░░░░░░░░░░░░█──────────██</span><br>
-<span class="red">───██░░░░░░░░░░░░░█──────██──██</span><br>
-<span class="red">──██░░░░░░░░░░░░░░█▄─────██──██</span><br>
-<span class="red">─████████████░░░░░░██────────██</span><br>
-<span class="red">██░░░░░░░░░░░██░░░░░█████████████</span><br>
-<span class="red">██░░░░░░░░░░░██░░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓█</span><br>
-<span class="red">██░░░░░░░░░░░██░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓█</span><br>
-<span class="red">─▀███████████▒▒▒▒█▓▓▓███████████▀</span><br>
-<span class="red">────██▒▒▒▒▒▒▒▒▒▒▒▒█▓▓▓▓▓▓▓▓▓▓▓▓█</span><br>
-<span class="red">─────██▒▒▒▒▒▒▒▒▒▒▒▒██▓▓▓▓▓▓▓▓▓▓█</span><br>
-<span class="red">──────█████▒▒▒▒▒▒▒▒▒▒██████████</span><br>
-<span class="red">─────────▀███████████▀</span><br><br>
+<!-- Kontainer Error -->
+<div id="errors-container"></div>
 
-<span class="yellow">████████╗██████╗░░█████╗░░█████╗░██╗░░██╗</span><br>
-<span class="yellow">╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝</span><br>
-<span class="yellow">░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░</span><br>
-<span class="red">░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░</span><br>
-<span class="red">░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗</span><br>
-<span class="red">░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝</span><br><br>
+<script>
+  // Munculkan teks error terus-menerus
+  setInterval(() => {
+    const err = document.createElement("div");
+    err.className = "error-text";
+    err.textContent = "❌ ERROR RUNNING... SYSTEM BREACH DETECTED";
+    err.style.top = Math.floor(Math.random() * 90) + "%";
+    err.style.left = Math.floor(Math.random() * 90) + "%";
+    document.body.appendChild(err);
+  }, 200);
 
-<span class="yellow">██╗██████╗░</span><br>
-<span class="yellow">██║██╔══██╗</span><br>
-<span class="yellow">██║██████╔╝</span><br>
-<span class="red">██║██╔═══╝░</span><br>
-<span class="red">██║██║░░░░░</span><br>
-<span class="red">╚═╝╚═╝░░░░░</span><br><br>
-
-Created By Vicyfkr ( <span class="yellow">Future_ana30</span> )<br><br>
-
-Ip Address     : <span class="red">103.***.***.41</span><br>
-City           : <span class="highlight">Kebayoran Lama</span><br>
-Region         : <span class="highlight">Jakarta Selatan</span><br>
-Country        : <span class="highlight">Indonesia</span><br><br>
-
-Latitude       : <span class="highlight">6.2371875</span><br>
-Longitude      : <span class="highlight">106.7900625</span><br>
-Time Zone      : <span class="highlight">Asia/WIB</span><br>
-Postal Code    : <span class="highlight">12120</span><br><br>
-
-ISP            : <span class="cyan">SOFT CALL CUST-O-CARE PRIVATE LIMITED</span><br>
-Device         : <span class="cyan">IPHONE 11 128GB Black</span><br><br>
-
-Country Code   : <span class="highlight">IDN</span><br>
-Currencye       : <span class="highlight">IDR</span><br>
-Languages      : <span class="highlight">IDN</span><br>
-Calling Code   : <span class="highlight">+62817******</span><br><br>
-
-GOOGLE Maps    : <a href="https://www.google.com/maps/place/QQ7R%2B42,+Gunung,+Kec.+Kby.+Baru,+Kota+Jakarta+Selatan,+Daerah+Khusus+Ibukota+Jakarta/@-6.2371875,106.7900625,17z/data=!4m5!3m4!1s0x2e69f13f107c1d25:0x3b8c60e5c251c478!8m2!3d-6.2371875!4d106.7900625?hl=id-id&source=lnms&g_ep=Eg1tbF8yMDI1MDcwN18wIOC7DCoASAJQAg%3D%3D" target="_blank">https://maps.google.com/?q=19.0748,72.8856</a><br><br>
-
-[01] Return To Main Menu<br>
-[02] Exit<br><br>
-<span class="prompt">>></span>
-</div>
+  // Simulasi buka tab palsu
+  setTimeout(() => {
+    for (let i = 0; i < 3; i++) {
+      window.open("https://example.com", "_blank");
+    }
+  }, 5000);
+</script>
 
 </body>
 </html>
